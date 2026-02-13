@@ -17,8 +17,49 @@ To write a program to implement the the Logistic Regression Using Gradient Desce
 ```
 /*
 Program to implement the the Logistic Regression Using Gradient Descent.
-Developed by: 
-RegisterNumber:  
+Developed by: THARUN DP
+RegisterNumber:25018717
+import numpy as np
+import pandas as pd
+data = pd.read_csv("/mnt/data/Placement_Data.csv")
+
+data['status'] = data['status'].map({'Placed': 1, 'Not Placed': 0})
+
+X = data[['ssc_p', 'hsc_p', 'degree_p', 'etest_p', 'mba_p']].values
+y = data['status'].values
+
+X = np.c_[np.ones(X.shape[0]), X]
+
+theta = np.zeros(X.shape[1])
+
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+def compute_cost(X, y, theta):
+    m = len(y)
+    h = sigmoid(X @ theta)
+    cost = (-1/m) * np.sum(y*np.log(h) + (1-y)*np.log(1-h))
+    return cost
+
+def gradient_descent(X, y, theta, alpha, iterations):
+    m = len(y)
+    for i in range(iterations):
+        h = sigmoid(X @ theta)
+        gradient = (1/m) * (X.T @ (h - y))
+        theta -= alpha * gradient
+        
+        if i % 100 == 0:
+            print(f"Iteration {i}, Cost: {compute_cost(X, y, theta)}")
+    
+    return theta
+
+alpha = 0.001
+iterations = 1000
+
+theta = gradient_descent(X, y, theta, alpha, iterations)
+
+print("Final Parameters:", theta)
+ 
 */
 ```
 
