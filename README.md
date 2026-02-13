@@ -64,7 +64,8 @@ print("Final Parameters:", theta)
 ```
 
 ## Output:
-![logistic regression using gradient descent](sam.png)
+<img width="1321" height="242" alt="image" src="https://github.com/user-attachments/assets/7ac9af47-040d-4b58-b235-a7c7529fdd9f" />
+
 
 
 ## Result:
